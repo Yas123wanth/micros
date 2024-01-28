@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Enrollment Form</title>
+    </head>
+    <body>
+
+        <h1>Student Enrollment Form</h1>
+
+        <form>
+            <label for="rollNo">Roll No.:</label>
+            <input type="text" id="rollNo" name="rollNo"><br><br>
+
+            <label for="fullName">Full Name:</label> 
+            <input type="text" id="fullName" name="fullName" disabled><br><br>
+
+            <label for="class">Class:</label>
+            <input type="text" id="class" name="class" disabled><br><br>
+
+            <label for="birthDate">Birth Date:</label>
+            <input type="date" id="birthDate" name="birthDate" disabled><br><br>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" disabled></textarea><br><br>
+
+            <label for="enrollmentDate">Enrollment Date:</label>
+            <input type="date" id="enrollmentDate" name="enrollmentDate" disabled><br><br>
+
+
+            <label for="project_id">Project ID:</label>
+            <input type="text" id="project_id" name="project_id">
+
+            <label for="project_name">Project Name:</label>
+            <input type="text" id="project_name" name="project_name" disabled>
+
+          
+
+            <label for="shipment_no">Shipment No:</label>  
+            <input type="text" id="shipment_no" name="shipment_no">
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" disabled>
+  
+
+            <button id="save">Save</button>
+            <button id="update">Update</button>
+            <button id="reset">Reset</button>
+            <!-- Form -->
+            
+        </form>
+
+        <script>
+            // Database logic
+
+            const form = document.querySelector('form');
+            const rollNo = document.getElementById('rollNo');
+            const buttons = document.querySelectorAll('button');
+
+            rollNo.focus();
+
+            form.addEventListener('input', () => {
+                if (rollNoExists(rollNo.value)) {
+                    enableUpdate();
+                } else {
+                    enableSave();
+                }
+            });
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (button.id === 'save') {
+                        saveData();
+                    } else if (button.id === 'update') {
+                        updateData();
+                    } else if (button.id === 'reset') {
+                        resetForm();
+                    }
+                });
+            });
+
+            function rollNoExists(rollNo) {
+                // Check if rollNo exists in database
+                return false;
+            }
+
+            function enableSave() {
+                buttons[0].disabled = false;
+                buttons[1].disabled = true;
+            }
+
+            function enableUpdate() {
+                buttons[0].disabled = true;
+                buttons[1].disabled = false;
+            }
+
+            function saveData() {
+                // Save form data to database
+            }
+
+            function updateData() {
+                // Update form data in database 
+            }
+
+            function resetForm() {
+                // Reset form
+            }
+
+        </script>
+
+    </body>
+</html>
